@@ -29,8 +29,6 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --local user.email "you@example.com"  # Zmień na swój email
-          git config --local user.name "Your Name"  # Zmień na swoje imię
           git add scripts/last_flare_time.txt
           git commit -m "Update last flare time" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/GaVeX01/solar-flare-on-discord.git
