@@ -22,5 +22,5 @@ jobs:
           pip install requests
 
       - name: Run script
-        run: solar_flare_bot.py
+        run: main/solar_flare_bot.py
 
