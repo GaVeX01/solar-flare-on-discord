@@ -80,4 +80,4 @@ if flare:
                 f"# ten ostatni rozblysk to lipa jakas to nie wysylam (test)\n"
                 
             )
-            send_to_discord(message)
+        send_to_discord(message)
