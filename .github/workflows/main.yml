@@ -27,6 +27,11 @@ jobs:
       - name: Run script
         run: python scripts/solar_flare_bot.py  # Zmodyfikuj ścieżkę, jeśli to konieczne
 
+      - name: Configure Git
+        run: |
+          git config --local user.email "dejwid057@gmail.com"  # Zmień na swój email
+          git config --local user.name "roobick123"  # Zmień na swoje imię
+
       - name: Commit changes
         run: |
           git add scripts/last_flare_time.txt
