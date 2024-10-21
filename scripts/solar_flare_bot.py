@@ -1,5 +1,4 @@
 import requests
-import time
 
 # URL do webhooka Discord
 WEBHOOK_URL = 'https://discord.com/api/webhooks/1297959006446293055/K_9MdkpBJ0j2Yaw_FwkG-5l2dW4Qg50-92zfjZvfpGtWYS04rnQydkQ2IjkNExwRr40J'  # Wstaw tutaj URL webhooka Discord
@@ -28,32 +27,31 @@ def send_to_discord(message):
     else:
         print(f"Błąd przy wysyłaniu wiadomości: {response.status_code}")
 
-# Główna pętla sprawdzająca dane co pewien czas
+# Główna logika sprawdzająca dane i wysyłająca wiadomość
 last_flare_time = None
+flare = check_solar_flare()
 
-while True:
-    flare = check_solar_flare()
-    if flare:
-        flare_time = flare['time_tag']
+if flare:
+    flare_time = flare['time_tag']
+    
+    if last_flare_time != flare_time:
+        last_flare_time = flare_time
+        # Wyodrębnij dane rozbłysku
+        begin_time = flare['begin_time']
+        max_time = flare['max_time']
+        end_time = flare['end_time']
+        begin_class = flare['begin_class']
+        max_class = flare['max_class']
+        end_class = flare['end_class']
+        current_class = flare['current_class']
         
-        if last_flare_time != flare_time:
-            last_flare_time = flare_time
-            # Wyodrębnij dane rozbłysku
-            begin_time = flare['begin_time']
-            max_time = flare['max_time']
-            end_time = flare['end_time']
-            begin_class = flare['begin_class']
-            max_class = flare['max_class']
-            end_class = flare['end_class']
-            current_class = flare['current_class']
-            
-            # Wiadomość do wysłania na Discord
-            message = (
-                f"# Nowy rozbłysk słoneczny!\n"
-                f"- Czas rozpoczęcia: {begin_time}\n"
-                f"- Maksymalna moc: {max_class} o {max_time}\n"
-                f"- Czas zakończenia: {end_time}\n"
-                f"- Klasa na zakończenie: {end_class}\n"
-                f"- Aktualna moc: {current_class}"
-            )
-            send_to_discord(message)
+        # Wiadomość do wysłania na Discord
+        message = (
+            f"# Nowy rozbłysk słoneczny!\n"
+            f"- Czas rozpoczęcia: {begin_time}\n"
+            f"- Maksymalna moc: {max_class} o {max_time}\n"
+            f"- Czas zakończenia: {end_time}\n"
+            f"- Klasa na zakończenie: {end_class}\n"
+            f"- Aktualna moc: {current_class}"
+        )
+        send_to_discord(message)
