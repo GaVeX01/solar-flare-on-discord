@@ -59,4 +59,4 @@ while True:
             send_to_discord(message)
     
     # Sprawdzanie co godzinę
-    time.sleep(3600)
+    time.sleep(60)
