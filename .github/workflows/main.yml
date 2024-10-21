@@ -2,7 +2,7 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # Wykonuj co 10 minut
+    - cron: '*/10 * * * *'  # Wykonuj co 10 minut
   workflow_dispatch:  # Umożliwia ręczne uruchomienie
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.x'  # Ustaw wersję Pythona, np. 3.8
+          python-version: '3.8'  # Ustaw wersję Pythona, np. 3.8
 
       - name: Install dependencies
         run: |
@@ -26,3 +26,9 @@ jobs:
 
       - name: Run script
         run: python scripts/solar_flare_bot.py  # Zmodyfikuj ścieżkę, jeśli to konieczne
+
+      - name: Commit changes
+        run: |
+          git add scripts/last_flare_time.txt
+          git commit -m "Update last flare time" || echo "No changes to commit"
+          git push
