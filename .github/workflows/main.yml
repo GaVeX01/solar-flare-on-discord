@@ -2,7 +2,7 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Uruchamiaj co godzinę
+    - cron: '*/1 * * * *'  # Wykonuj co minutę
   workflow_dispatch:  # Umożliwia ręczne uruchomienie
 
 jobs:
