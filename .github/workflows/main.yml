@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.8'  # Ustaw wersję Pythona, np. 3.8
+          python-version: '3.x'  # Ustaw wersję Pythona, np. 3.8
 
       - name: Install dependencies
         run: |
@@ -29,6 +29,8 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config --local user.email "you@example.com"  # Zmień na swój email
+          git config --local user.name "Your Name"  # Zmień na swoje imię
           git add scripts/last_flare_time.txt
           git commit -m "Update last flare time" || echo "No changes to commit"
           git push
