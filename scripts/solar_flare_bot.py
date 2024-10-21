@@ -74,10 +74,3 @@ if flare:
             )
             send_to_discord(message)
             save_last_flare_time(flare_time)  # Zapisz ostatni czas rozbłysku
-    else:
-        print(f"ostatni rozbłysk jakiś mierny to nie wysyłam")
-        message = (
-                f"# ten ostatni rozblysk to lipa jakas to nie wysylam (test)\n"
-                
-            )
-        send_to_discord(message)
