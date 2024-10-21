@@ -57,6 +57,3 @@ while True:
                 f"- Aktualna moc: {current_class}"
             )
             send_to_discord(message)
-    
-    # Sprawdzanie co godzinę
-    time.sleep(60)
