@@ -8,7 +8,7 @@ WEBHOOK_URL = 'https://discord.com/api/webhooks/1297959006446293055/K_9MdkpBJ0j2
 url = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-latest.json'
 
 # Ścieżka do pliku, w którym przechowujemy czas ostatniego rozbłysku
-LAST_FLARE_TIME_FILE = 'last_flare_time.txt'
+LAST_FLARE_TIME_FILE = 'scripts/last_flare_time.txt'
 
 # Funkcja pobierająca najnowsze dane o rozbłyskach
 def check_solar_flare():
