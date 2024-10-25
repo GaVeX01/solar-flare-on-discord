@@ -1,39 +1,39 @@
-name: Run Python Script
+#name: Run Python Script
 
-on:
-  schedule:
-    - cron: '*/10 * * * *'  # Wykonuj co 10 minut
-  workflow_dispatch:  # Umożliwia ręczne uruchomienie
+#on:
+#  schedule:
+#    - cron: '*/10 * * * *'  # Wykonuj co 10 minut
+#  workflow_dispatch:  # Umożliwia ręczne uruchomienie
 
-jobs:
-  run-script:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+#jobs:
+  #run-script:
+   # runs-on: ubuntu-latest
+ #   steps:
+#      - name: Checkout repo
+ #       uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'  # Ustaw wersję Pythona, np. 3.8
+#      - name: Set up Python
+#        uses: actions/setup-python@v3
+ #       with:
+#          python-version: '3.x'  # Ustaw wersję Pythona, np. 3.8
 
-      - name: Install dependencies
-        run: |
-          pip install requests
+ #     - name: Install dependencies
+ #       run: |
+  #        pip install requests
 
-      - name: Check Python version
-        run: python --version
+  #    - name: Check Python version
+ #       run: python --version
 
-      - name: Run script
-        run: python scripts/solar_flare_bot.py  # Zmodyfikuj ścieżkę, jeśli to konieczne
+  #    - name: Run script
+#        run: python scripts/solar_flare_bot.py  # Zmodyfikuj ścieżkę, jeśli to konieczne
 
-      - name: Configure Git
-        run: |
-          git config --local user.email "dejwid057@gmail.com"  # Ustaw adres e-mail
-          git config --local user.name "roobick123"  # Ustaw imię
+    #  - name: Configure Git
+     #   run: |
+    #      git config --local user.email "dejwid057@gmail.com"  # Ustaw adres e-mail
+#          git config --local user.name "roobick123"  # Ustaw imię
 
-      - name: Commit changes
-        run: |
-          git add scripts/last_flare_time.txt
-          git commit -m "Update last flare time" || echo "No changes to commit"
-          git push origin HEAD:main
+    #  - name: Commit changes
+     #   run: |
+#          git add scripts/last_flare_time.txt
+    #      git commit -m "Update last flare time" || echo "No changes to commit"
+      #    git push origin HEAD:main
